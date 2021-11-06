@@ -19,7 +19,7 @@ def homePage():
     print("                 ============")
 
 
-def listOfUsersPage(customers):
+def listUsersPage(customers):
     print()
     print()
     print('                 List of users')

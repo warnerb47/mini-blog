@@ -28,6 +28,6 @@ customers = [
     },
 ]
 homePage()
-listOfUsersPage(customers)
+listUsersPage(customers)
 newUserPage()
 deleteUserPage()
