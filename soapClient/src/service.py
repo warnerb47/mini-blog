@@ -1,7 +1,4 @@
 import requests
-url="http://localhost:5000/wsdl?wsdl"
-#headers = {'content-type': 'application/soap+xml'}
-headers = {'content-type': 'text/xml'}
 
 def getUsers(url, headers):
   body = """<?xml version="1.0" encoding="UTF-8"?>
@@ -14,8 +11,8 @@ def getUsers(url, headers):
   response = requests.post(url,data=body,headers=headers)
   print(response.content)
 
+
 def getUser(url, headers, idUser):
-  #617b2bb4ebbd8e4965450a7c
   body = """<?xml version="1.0" encoding="UTF-8"?>
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.soapService/">
               <soapenv:Header/>
@@ -29,8 +26,8 @@ def getUser(url, headers, idUser):
   response = requests.post(url,data=body,headers=headers)
   print(response.content)
 
+
 def deleteUser(url, headers, idUser):
-  #617b2bb4ebbd8e4965450a7c
   body = """<?xml version="1.0" encoding="UTF-8"?>
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.soapService/">
               <soapenv:Header/>
@@ -46,7 +43,6 @@ def deleteUser(url, headers, idUser):
 
 
 def postUser(url, headers, login, name, password):
-  #617b2bb4ebbd8e4965450a7c
   body = """<?xml version="1.0" encoding="UTF-8"?>
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.soapService/">
               <soapenv:Header/>
@@ -69,9 +65,3 @@ def postUser(url, headers, login, name, password):
             </soapenv:Envelope>""".format(login=login, name=name, password=password)
   response = requests.post(url,data=body,headers=headers)
   print(response.content)
-
-
-#getUsers(url, headers)
-#getUser(url, headers, "617b2bb4ebbd8e4965450a7c")
-#deleteUser(url, headers, "617b2bb4ebbd8e4965450a7c")
-#postUser(url, headers, "login", "name", "password")
