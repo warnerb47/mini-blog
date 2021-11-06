@@ -64,7 +64,6 @@ def extractData(xmlResponse, request='getUsers'):
         }
         customers.append(customer)
 
-    # print(customers)
     return customers
 
 #print(extractData(GetUsers))
