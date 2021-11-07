@@ -2,9 +2,11 @@ import QtQuick 6
 import QtQuick.Controls 6
 import QtQuick.Layouts 1.0
 import Qt.labs.qmlmodels 1.0
-import "../components/controls"
+import "../components/homePage"
 
 Item {
+    id: homeItem
+    property StackView stackView
     Rectangle {
         id: rectangle
         color: "#2c313c"
@@ -91,6 +93,61 @@ Item {
                             anchors.left: parent.left
                             anchors.leftMargin: 20
                             anchors.verticalCenter: parent.verticalCenter
+                        }
+
+                        Button{
+                            id: detailUserBtn
+                            width: 100
+                            text: qsTr("voir")
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.right: parent.right
+                            anchors.rightMargin: 120
+                            background: Rectangle{
+                                color: "#059e1c"
+                            }
+                            contentItem: Text {
+                                text: detailUserBtn.text
+                                color: "#ffffff"
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
+                            onClicked: detailUser.open()
+                            Popup {
+                                id: detailUser
+                                anchors.centerIn: Overlay.overlay
+                                width: 400
+                                height: 500
+                                modal: true
+                                focus: true
+                                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+                                background: Rectangle{
+                                    color: "#2c313c"
+                                }
+                                
+                                DetailUser{
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    anchors.top: parent.top
+                                }
+                            }
+                        }
+
+                        Button{
+                            id: deleteUser
+                            width: 100
+                            text: qsTr("supprimer")
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.right: parent.right
+                            anchors.rightMargin: 10
+                            background: Rectangle{
+                                color: "#8c1108"
+                            }
+                            contentItem: Text {
+                                text: deleteUser.text
+                                color: "#ffffff"
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
+                            // onClicked: backend.checkLogin(name.text, login.text, passwordField.text)
                         }
                     }
                     // highlight: Rectangle { color: "lightsteelblue"; radius: 5 }

@@ -22,6 +22,7 @@ ApplicationWindow{
     // CUSTOM PROPERTIES
     property string textUsername: "User"
     property string textPassword: "Pass"
+    
 
     Rectangle {
         id: bg

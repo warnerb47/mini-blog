@@ -49,11 +49,12 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("backend", main)
 
     # Load QML File
-    # engine.load("qml/app.qml")
-    engine.load("qml/main.qml")
+    engine.load("qml/app.qml")
+    # engine.load("qml/main.qml")
 
     # Check Exit App
     if not engine.rootObjects():
         sys.exit(-1)
     sys.exit(app.exec())
+
 

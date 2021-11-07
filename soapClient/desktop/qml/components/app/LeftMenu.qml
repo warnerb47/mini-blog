@@ -36,7 +36,7 @@ Rectangle {
                 btnHome.isActiveMenu = true
                 btnSettings.isActiveMenu = false
                 btnOpen.isActiveMenu = false
-                stackView.push(Qt.resolvedUrl("../../pages/homePage.qml"))
+                stackView.push(Qt.resolvedUrl("../../pages/homePage.qml"), { 'stackView': stackView })
             }
         }
 
