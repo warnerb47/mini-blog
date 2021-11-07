@@ -65,43 +65,7 @@ ApplicationWindow{
         anchors.topMargin: 50       
         anchors.horizontalCenter: parent.horizontalCenter
         onClicked: backend.checkLogin(usernameField.text, passwordField.text)
-        // onClicked: internal.checkLogin(usernameField.text, passwordField.text)
     }
-
-    // QtObject {
-    //     id: internal
-    //     property string user: "admin"
-    //     property string pass: "admin"
-
-    //     // CHECK LOGIN FUNCTION
-    //     function checkLogin(username, password) {
-    //         if(username === user && password === pass){
-    //             var component = Qt.createComponent("app.qml")
-    //             var win = component.createObject()
-    //             win.show()
-    //             visible = false
-    //         } else{
-
-    //             // CHANGE USER COLOR
-    //             if(username !== user){
-    //                 usernameField.Material.foreground = Material.Pink
-    //                 usernameField.Material.accent = Material.Pink
-    //             } else {
-    //                 usernameField.Material.foreground = Material.LightBlue
-    //                 usernameField.Material.accent = Material.LightBlue
-    //             }
-
-    //             // CHANGE PASS COLOR
-    //             if(password !== pass){
-    //                 passwordField.Material.foreground = Material.Pink
-    //                 passwordField.Material.accent = Material.Pink
-    //             } else {
-    //                 passwordField.Material.foreground = Material.LightBlue
-    //                 passwordField.Material.accent = Material.LightBlue
-    //             }
-    //         }
-    //     }
-    // }
 
 
     Connections {
