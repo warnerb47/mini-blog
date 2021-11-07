@@ -8,13 +8,13 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     if (token == null) {
       return res
         .status(401)
-        .send("Vous devez vous authentifier pour effectuer cette opération");
+        .send({data:"Vous devez vous authentifier pour effectuer cette opération"});
     }
 
     verify(token, process.env['TOKEN_SECRET'] || 'secret_not_avaible', (err, credential) => {
       if (err) {
         console.log(err);
-        return res.status(403).send("Votre token est invalide");
+        return res.status(403).send({data:"Votre token est invalide"});
       }
       (req as any).credential = credential;
       next();

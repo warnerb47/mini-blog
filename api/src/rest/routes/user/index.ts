@@ -49,7 +49,7 @@ userRouter.post('/', async (req, res) => {
         if (req.body) {
             const data = await postUser(req.body);
             res.send({data});
-        }else{
+        }else{  
             res.sendStatus(400);
         }        
     } catch (error) {
@@ -62,7 +62,7 @@ userRouter.patch('/:id', authenticateToken, async (req, res) => {
     try {
         if (req.params.id && req.body) {
             const data = updateUser(req.body, req.params.id);
-            res.send({data});
+            res.send({data: 'utilisateur modifier'});
         }else{
             res.sendStatus(400);
         }        
@@ -77,7 +77,7 @@ userRouter.delete('/:id', authenticateToken, async (req, res) => {
     try {
         if (req.params.id) {
             const data = deleteUser(req.params.id);
-            res.send({data});
+            res.send({data: 'utilisateur modifier'});
         }else{
             res.sendStatus(400);
         }

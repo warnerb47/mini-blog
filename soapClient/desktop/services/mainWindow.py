@@ -21,17 +21,6 @@ class MainWindow(QObject):
     # Function To Check Login
     @Slot(str, str)
     def checkLogin(self, getUser, getPass):
-        # if(self.staticUser.lower() == getUser.lower() and self.staticPass == getPass):
-        #     # Send User And Pass
-        #     self.signalUser.emit("Username: " + getUser)
-        #     self.signalPass.emit("Password: " + getPass)
-
-        #     # Send Login Signal
-        #     self.signalLogin.emit(True)
-        #     print("Login passed!")
-        # else:
-        #     self.signalLogin.emit(False)
-        #     print("Login error!")
         token = login(getUser, getPass)
         if(
             not token or
