@@ -14,15 +14,6 @@ Rectangle {
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
 
-    PropertyAnimation{
-        id: animationMenu
-        target: leftMenu
-        property: "width"
-        to: if(leftMenu.width == 70) return 250; else return 70
-        duration: 500
-        easing.type: Easing.InOutQuint
-    }
-
     Column {
         id: columnMenus
         anchors.left: parent.left
@@ -38,42 +29,44 @@ Rectangle {
         LeftMenuBtn {
             id: btnHome
             width: leftMenu.width
-            text: qsTr("Home")
+            text: qsTr("Accueil")
             btnIconSource: "../../../images/svg_images/home_icon.svg"
             isActiveMenu: true
             onClicked: {
                 btnHome.isActiveMenu = true
                 btnSettings.isActiveMenu = false
-                stackView.push(Qt.resolvedUrl("pages/homePage.qml"))
+                btnOpen.isActiveMenu = false
+                stackView.push(Qt.resolvedUrl("../../pages/homePage.qml"))
             }
         }
 
         LeftMenuBtn {
             id: btnOpen
             width: leftMenu.width
-            text: qsTr("Open")
-            btnIconSource: "../../../images/svg_images/open_icon.svg"
+            text: qsTr("Créer un utilisateur")
+            btnIconSource: "../../../images/svg_images/user-plus.svg"
+            onClicked: {
+                btnHome.isActiveMenu = false
+                btnSettings.isActiveMenu = false
+                btnOpen.isActiveMenu = true
+                stackView.push(Qt.resolvedUrl("../../pages/newUserPage.qml"))
+            }
         }
 
-        LeftMenuBtn {
-            id: btnSave
-            width: leftMenu.width
-            text: qsTr("Save")
-            btnIconSource: "../../../images/svg_images/save_icon.svg"
-        }
     }
 
     LeftMenuBtn {
         id: btnSettings
         width: leftMenu.width
-        text: qsTr("Settings")
+        text: qsTr("paramétre")
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 25
         btnIconSource: "../../../images/svg_images/settings_icon.svg"
         onClicked: {
             btnHome.isActiveMenu = false
             btnSettings.isActiveMenu = true
-            stackView.push(Qt.resolvedUrl("pages/settingsPage.qml"))
+            btnOpen.isActiveMenu = false
+            stackView.push(Qt.resolvedUrl("../../pages/settingPage.qml"))
         }
     }
 }

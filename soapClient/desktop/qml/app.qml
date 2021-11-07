@@ -23,33 +23,6 @@ ApplicationWindow{
     property string textUsername: "User"
     property string textPassword: "Pass"
 
-    // // Labels
-    // // USER
-    // Text{
-    //     id: textUser
-    //     text: textUsername
-    //     anchors.verticalCenter: parent.verticalCenter
-    //     horizontalAlignment: Text.AlignHCenter
-    //     verticalAlignment: Text.AlignVCenter
-    //     color: "#ffffff"
-    //     anchors.horizontalCenter: parent.horizontalCenter
-    //     font.pointSize: 10
-    // }
-
-    // // PASSWORD
-    // Text{
-    //     id: textPass
-    //     text: textPassword
-    //     anchors.verticalCenter: parent.verticalCenter
-    //     horizontalAlignment: Text.AlignHCenter
-    //     anchors.margins: 10
-    //     anchors.top: textUser.bottom
-    //     anchors.topMargin: 20
-    //     color: "#ffffff"
-    //     anchors.horizontalCenter: parent.horizontalCenter
-    //     font.pointSize: 10
-    // }
-
     Rectangle {
         id: bg
         color: "#2c313c"
@@ -107,6 +80,81 @@ ApplicationWindow{
                     anchors.topMargin: 0
                     anchors.bottomMargin: 0
                     anchors.leftMargin: 0
+
+                    PropertyAnimation{
+                        id: animationMenu
+                        target: leftMenu
+                        property: "width"
+                        to: if(leftMenu.width == 70) return 250; else return 70
+                        duration: 500
+                        easing.type: Easing.InOutQuint
+                    }
+                }
+
+                Rectangle {
+                    id: contentPages
+                    color: "#00000000"
+                    anchors.left: leftMenu.right
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    clip: true
+                    anchors.rightMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.bottomMargin: 25
+                    anchors.topMargin: 0
+
+                    StackView {
+                        id: stackView
+                        anchors.fill: parent
+                        initialItem: Qt.resolvedUrl("pages/homePage.qml")
+
+                        pushEnter: Transition {
+                            PropertyAnimation {
+                                property: "opacity"
+                                from: 0
+                                to:1
+                                duration: 200
+                            }
+                        }
+                        pushExit: Transition {
+                            PropertyAnimation {
+                                property: "opacity"
+                                from: 1
+                                to:0
+                                duration: 200
+                            }
+                        }
+                        popEnter: Transition {
+                            PropertyAnimation {
+                                property: "opacity"
+                                from: 0
+                                to:1
+                                duration: 200
+                            }
+                        }
+                        popExit: Transition {
+                            PropertyAnimation {
+                                property: "opacity"
+                                from: 1
+                                to:0
+                                duration: 200
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: rectangle
+                    color: "#282c34"
+                    anchors.left: leftMenu.right
+                    anchors.right: parent.right
+                    anchors.top: contentPages.bottom
+                    anchors.bottom: parent.bottom
+                    anchors.rightMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.bottomMargin: 0
+                    anchors.topMargin: 0
                 }
             }
         }

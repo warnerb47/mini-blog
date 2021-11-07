@@ -5,7 +5,7 @@ import "../components/controls"
 Item {
     Text{
         id: textUser
-        text: "Home page"
+        text: "New User page"
         anchors.verticalCenter: parent.verticalCenter
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
