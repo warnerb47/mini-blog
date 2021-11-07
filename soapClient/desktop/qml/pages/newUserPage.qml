@@ -16,16 +16,6 @@ Item {
         anchors.topMargin: 50
     }
 
-        // IMAGE IMPORT
-    // Image{
-    //     id: image 
-    //     width: 300
-    //     height: 120
-    //     source: "../../images/logo.png"        
-    //     anchors.horizontalCenter: parent.horizontalCenter
-    //     anchors.top: topBar.bottom
-    //     anchors.topMargin: 60
-    // }
 
     // TEXT FIELD USERNAME
     TextField{

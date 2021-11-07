@@ -19,14 +19,28 @@ ApplicationWindow{
     Material.accent: Material.LightBlue
 
     // IMAGE IMPORT
-    Image{
-        id: image 
-        width: 300
-        height: 120
-        source: "../images/logo.png"        
+    // Image{
+    //     id: image 
+    //     width: 300
+    //     height: 120
+    //     source: "../images/logo.png"        
+    //     anchors.horizontalCenter: parent.horizontalCenter
+    //     anchors.top: topBar.bottom
+    //     anchors.topMargin: 60
+    // }
+
+    Rectangle{ id: topElement}
+
+    Text{
+        id: textUser
+        text: "Connexion dashboard Mini Blog"
+        anchors.top: topElement.bottom
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        color: "#ffffff"
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: topBar.bottom
-        anchors.topMargin: 60
+        font.pointSize: 15
+        anchors.topMargin: 70
     }
 
     // TEXT FIELD USERNAME
@@ -35,10 +49,10 @@ ApplicationWindow{
         width: 300
         text: qsTr("")
         selectByMouse: true
-        placeholderText: qsTr("Your username or email")
+        placeholderText: qsTr("Login")
         verticalAlignment: Text.AlignVCenter        
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: image.bottom
+        anchors.top: textUser.bottom
         anchors.topMargin: 60
     }
 
@@ -48,7 +62,7 @@ ApplicationWindow{
         width: 300
         text: qsTr("")
         selectByMouse: true
-        placeholderText: qsTr("Your password")
+        placeholderText: qsTr("Mot de passe")
         verticalAlignment: Text.AlignVCenter        
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: usernameField.bottom
@@ -60,7 +74,7 @@ ApplicationWindow{
     Button{
         id: buttonLogin
         width: 300
-        text: qsTr("Login")
+        text: qsTr("se connecter")
         anchors.top: passwordField.bottom
         anchors.topMargin: 50       
         anchors.horizontalCenter: parent.horizontalCenter
