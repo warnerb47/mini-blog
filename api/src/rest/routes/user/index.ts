@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { authenticateToken } from './../token/token.service';
-import { deleteUser, getUser, getUsers, postUser, updateUser } from './user.service';
+import { deleteUser, getUser, getUsers, login, postUser, updateUser } from './user.service';
 
 export const userRouter: Router = Router();
 
@@ -25,6 +25,21 @@ userRouter.get('/:id', authenticateToken, async (req, res) => {
     } catch (error) {
         console.log(error);
         res.sendStatus(500);     
+    }
+});
+
+userRouter.post('/login', async (req, res) => {
+    // console.log(req.body);
+    try {
+        if (req.body) {
+            const data = await login(req.body);
+            res.send({data});
+        }else{
+            res.sendStatus(400);
+        }
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
     }
 });
 

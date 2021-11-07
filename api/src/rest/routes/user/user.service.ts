@@ -55,7 +55,9 @@ export const deleteUser = async (id: string) => {
 export const login = async (payload: IUser): Promise<string> => {
     try {
         if (payload) {
-            const found = await getUser(payload._id as string);
+            const found = await userModel.findOne({login: payload.login, password: payload.password });
+            // console.log(payload);
+            // console.log(found);
             if (found) {
                 const token = generateAccessToken(payload);
                 return token;
