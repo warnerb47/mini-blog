@@ -77,7 +77,7 @@ userRouter.delete('/:id', authenticateToken, async (req, res) => {
     try {
         if (req.params.id) {
             const data = deleteUser(req.params.id);
-            res.send({data: 'utilisateur modifier'});
+            res.send({data: 'utilisateur supprimé'});
         }else{
             res.sendStatus(400);
         }
