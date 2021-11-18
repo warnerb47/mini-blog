@@ -8,17 +8,19 @@ pipeline{
             }
         }
         stage('Build backEnd Services') {
-            stage('Build rest api ...'){
-                steps {
-                    echo "installing rest api ...";
-                    dir('backEnd\\restService') {
-                        powershell label: '', script: 'npm install'
+            stages{
+                stage('Build rest api ...'){
+                    steps {
+                        echo "installing rest api ...";
+                        dir('backEnd\\restService') {
+                            powershell label: '', script: 'npm install'
+                        }
                     }
-                }
-                steps {
-                    echo "Building rest api ...";
-                    dir('backEnd\\restService') {
-                        powershell label: '', script: 'npm run build'
+                    steps {
+                        echo "Building rest api ...";
+                        dir('backEnd\\restService') {
+                            powershell label: '', script: 'npm run build'
+                        }
                     }
                 }
             }
