@@ -7,19 +7,5 @@ pipeline{
                 git 'https://github.com/warnerb47/mini-blog.git'
             }
         }
-        stage('Build backEnd Services') {
-            steps {
-                echo "installing rest api ...";
-                dir('backEnd\\restService') {
-                    powershell label: '', script: 'npm install'
-                }
-            }
-            steps {
-                echo "Building rest api ...";
-                dir('backEnd\\restService') {
-                    powershell label: '', script: 'npm run build'
-                }
-            }
-        }
     }
 }
