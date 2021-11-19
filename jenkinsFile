@@ -4,19 +4,19 @@ pipeline{
         stage('Git-checkout') {
             steps {
                 echo "Checking out from Git Repo";
-                // git 'https://github.com/warnerb47/mini-blog.git'
+                git 'https://github.com/warnerb47/mini-blog.git'
             }
         }
         stage('Build backEnd Services') {
             steps {
                 echo "installing rest api ...";
-                // dir('backEnd\\restService') {
-                //     powershell label: '', script: 'npm install'
-                // }
+                dir('backEnd\\restService') {
+                    powershell label: '', script: 'npm install'
+                }
                 echo "Building rest api ...";
-                // dir('backEnd\\restService') {
-                //     powershell label: '', script: 'npm run build'
-                // }
+                dir('backEnd\\restService') {
+                    powershell label: '', script: 'npm run build'
+                }
             }
         }
     }
