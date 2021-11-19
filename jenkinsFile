@@ -13,8 +13,6 @@ pipeline{
                 // dir('backEnd\\restService') {
                 //     powershell label: '', script: 'npm install'
                 // }
-            }
-            steps {
                 echo "Building rest api ...";
                 // dir('backEnd\\restService') {
                 //     powershell label: '', script: 'npm run build'
