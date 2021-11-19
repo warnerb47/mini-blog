@@ -1,12 +1,6 @@
 pipeline{
     agent any
     stages{
-        stage('Git-checkout') {
-            steps {
-                echo "Checking out from Git Repo";
-                // git 'https://github.com/warnerb47/mini-blog.git'
-            }
-        }
         stage('Build backEnd Services') {
             steps {
                 echo "installing rest api ...";
@@ -15,6 +9,42 @@ pipeline{
                 }
                 echo "Building rest api ...";
                 dir('backEnd\\restService') {
+                    powershell label: '', script: 'npm run build'
+                }
+                echo "Building soap api ...";
+                dir('backEnd\\soapService') {
+                    powershell label: '', script: 'gradlew build'
+                }
+            }
+        }
+        stage('Build desktop apps') {
+            steps {
+                echo "creating virtuel env ...";
+                dir('frontEnd') {
+                    powershell label: '', script: 'python -m venv env'
+                }
+                echo "activate virtuel env ...";
+                dir('frontEnd') {
+                    powershell label: '', script: 'env\\Scripts\\activate'
+                }
+                echo "installing requirements ...";
+                dir('frontEnd') {
+                    powershell label: '', script: 'pip install -r requirements.txt'
+                }
+                echo "deactivate  virtuel env...";
+                dir('frontEnd') {
+                    powershell label: '', script: 'deactivate'
+                }
+            }
+        }
+        stage('Build web app') {
+            steps {
+                echo "installing web app ...";
+                dir('webClient') {
+                    powershell label: '', script: 'npm install'
+                }
+                echo "Building web app ...";
+                dir('webClient') {
                     powershell label: '', script: 'npm run build'
                 }
             }
